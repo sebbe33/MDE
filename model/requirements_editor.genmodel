@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/requirements_editor/src" modelPluginID="requirements_editor"
+    modelName="Requirements_editor" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>requirements_editor.ecore</foreignModel>
+  <genPackages prefix="Requirements_editor" disposableProviderFactory="true" ecorePackage="requirements_editor.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="requirements_editor.ecore#//BinaryOperator">
+      <genEnumLiterals ecoreEnumLiteral="requirements_editor.ecore#//BinaryOperator/OR"/>
+      <genEnumLiterals ecoreEnumLiteral="requirements_editor.ecore#//BinaryOperator/AND"/>
+    </genEnums>
+    <genClasses ecoreClass="requirements_editor.ecore#//Requirement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute requirements_editor.ecore#//Requirement/identifier"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute requirements_editor.ecore#//Requirement/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute requirements_editor.ecore#//Requirement/priority"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute requirements_editor.ecore#//Requirement/isMandatory"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference requirements_editor.ecore#//Requirement/description"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference requirements_editor.ecore#//Requirement/requirementOwnedBy"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference requirements_editor.ecore#//Requirement/dependencySource"/>
+    </genClasses>
+    <genClasses ecoreClass="requirements_editor.ecore#//Category">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute requirements_editor.ecore#//Category/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference requirements_editor.ecore#//Category/subcategoryOf"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference requirements_editor.ecore#//Category/categoryOwnedBy"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference requirements_editor.ecore#//Category/requirement"/>
+    </genClasses>
+    <genClasses ecoreClass="requirements_editor.ecore#//Description"/>
+    <genClasses ecoreClass="requirements_editor.ecore#//TextualDescription">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute requirements_editor.ecore#//TextualDescription/description"/>
+    </genClasses>
+    <genClasses ecoreClass="requirements_editor.ecore#//QualityRequirement"/>
+    <genClasses ecoreClass="requirements_editor.ecore#//FunctionalRequirement"/>
+    <genClasses ecoreClass="requirements_editor.ecore#//Person">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute requirements_editor.ecore#//Person/firstname"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute requirements_editor.ecore#//Person/lastname"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference requirements_editor.ecore#//Person/personOwnsRequirement"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference requirements_editor.ecore#//Person/personOwnsCategory"/>
+    </genClasses>
+    <genClasses ecoreClass="requirements_editor.ecore#//Dependency"/>
+    <genClasses ecoreClass="requirements_editor.ecore#//SimpleDependency">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute requirements_editor.ecore#//SimpleDependency/comment"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference requirements_editor.ecore#//SimpleDependency/dependencyTarget"/>
+    </genClasses>
+    <genClasses ecoreClass="requirements_editor.ecore#//Refines"/>
+    <genClasses ecoreClass="requirements_editor.ecore#//ICost"/>
+    <genClasses ecoreClass="requirements_editor.ecore#//CValue"/>
+    <genClasses ecoreClass="requirements_editor.ecore#//Requires">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference requirements_editor.ecore#//Requires/argument"/>
+    </genClasses>
+    <genClasses ecoreClass="requirements_editor.ecore#//Argument"/>
+    <genClasses ecoreClass="requirements_editor.ecore#//BinaryOperatorArgument">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference requirements_editor.ecore#//BinaryOperatorArgument/rightSideArgument"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference requirements_editor.ecore#//BinaryOperatorArgument/leftSideArgument"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute requirements_editor.ecore#//BinaryOperatorArgument/operator"/>
+    </genClasses>
+    <genClasses ecoreClass="requirements_editor.ecore#//RequirementArgument">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference requirements_editor.ecore#//RequirementArgument/requirement"/>
+    </genClasses>
+    <genClasses ecoreClass="requirements_editor.ecore#//DocumentRoot">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference requirements_editor.ecore#//DocumentRoot/rootCategories"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference requirements_editor.ecore#//DocumentRoot/person"/>
+    </genClasses>
+    <genClasses ecoreClass="requirements_editor.ecore#//NOTOperator">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference requirements_editor.ecore#//NOTOperator/argument"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
