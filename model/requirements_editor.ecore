@@ -12,11 +12,18 @@
   </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="Requirement" abstract="true" interface="true">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="differentResponsible"/>
+      <details key="constraints" value="differentResponsible notItself"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
       <details key="differentResponsible" value="self.requirementOwnedBy.personOwnsCategory->forAll(c | not c.requirement->includes(self))"/>
+      <details key="notItself" value="self.dependencySource->select(oclIsTypeOf(Requires))->forAll(requires: Dependency | findLeafNodes(requires.oclAsType(Requires).argument)->forAll(ra: RequirementArgument | ra.requirement &lt;> self))"/>
     </eAnnotations>
+    <eOperations name="findLeafNodes" ordered="false" upperBound="-1" eType="#//RequirementArgument">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+        <details key="body" value="&#xA;&#x9;&#x9;&#x9;if argument.oclIsKindOf(BinaryOperatorArgument) then&#xA;&#x9;&#x9;&#x9;&#x9;findLeafNodes(argument.oclAsType(BinaryOperatorArgument).leftSideArgument)->union(findLeafNodes(argument.oclAsType(BinaryOperatorArgument).rightSideArgument))&#xA;&#x9;&#x9;&#x9;else&#xA;&#x9;&#x9;&#x9;&#x9;if argument.oclIsKindOf(NOTOperator) then&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;findLeafNodes(argument.oclAsType(NOTOperator).argument)&#xA;&#x9;&#x9;&#x9;&#x9;else&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;Set{argument.oclAsType(RequirementArgument)}&#xA;&#x9;&#x9;&#x9;&#x9;endif&#xA;&#x9;&#x9;&#x9;endif"/>
+      </eAnnotations>
+      <eParameters name="argument" eType="#//Argument"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="identifier" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="priority" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
