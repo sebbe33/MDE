@@ -86,6 +86,12 @@
   <eClassifiers xsi:type="ecore:EClass" name="ICost" eSuperTypes="#//SimpleDependency"/>
   <eClassifiers xsi:type="ecore:EClass" name="CValue" eSuperTypes="#//SimpleDependency"/>
   <eClassifiers xsi:type="ecore:EClass" name="Requires" eSuperTypes="#//Dependency">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="selfDependency"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="selfDependency" value="self.argument.oclAsSet()->closure(arg : Argument | &#xA;&#x9;&#x9;&#x9;if arg.oclIsKindOf(BinaryOperatorArgument) then arg.oclAsType(BinaryOperatorArgument).leftSideArgument.oclAsSet()->including(arg.oclAsType(BinaryOperatorArgument).rightSideArgument) &#xA;&#x9;&#x9;&#x9;else &#xA;&#x9;&#x9;&#x9;&#x9;if arg.oclIsKindOf(NOTOperator) then arg.oclAsType(NOTOperator).argument.oclAsSet() &#xA;&#x9;&#x9;&#x9;&#x9;else arg.oclAsSet() &#xA;&#x9;&#x9;&#x9;&#x9;endif &#xA;&#x9;&#x9;&#x9;endif&#xA;&#x9;&#x9;)->select(arg : Argument | arg.oclIsKindOf(RequirementArgument))->forAll(arg : Argument | not arg.oclAsType(RequirementArgument).requirement.dependencySource->includes(self))"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="argument" lowerBound="1"
         eType="#//Argument" containment="true"/>
   </eClassifiers>
