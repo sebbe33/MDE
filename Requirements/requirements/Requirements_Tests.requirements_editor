@@ -18,13 +18,13 @@
   </rootCategories>
   <rootCategories name="Two" categoryOwnedBy="//@person.0">
     <subcategoryOf name="3" categoryOwnedBy="//@person.0">
-      <requirement xsi:type="requirements_editor:FunctionalRequirement" name="F2" requirementOwnedBy="//@person.2">
+      <requirement xsi:type="requirements_editor:FunctionalRequirement" name="F2" requirementOwnedBy="//@person.0">
         <description xsi:type="requirements_editor:TextualDescription"/>
         <dependencySource xsi:type="requirements_editor:Requires">
           <argument xsi:type="requirements_editor:BinaryOperatorArgument">
             <rightSideArgument xsi:type="requirements_editor:BinaryOperatorArgument" operator="AND">
               <rightSideArgument xsi:type="requirements_editor:NOTOperator">
-                <argument xsi:type="requirements_editor:RequirementArgument" requirement="//@rootCategories.0/@subcategoryOf.1/@requirement.0"/>
+                <argument xsi:type="requirements_editor:RequirementArgument" requirement="//@rootCategories.1/@subcategoryOf.0/@requirement.0"/>
               </rightSideArgument>
               <leftSideArgument xsi:type="requirements_editor:RequirementArgument" requirement="//@rootCategories.1/@requirement.0"/>
             </rightSideArgument>
@@ -33,23 +33,13 @@
         </dependencySource>
       </requirement>
     </subcategoryOf>
-    <subcategoryOf name="4" categoryOwnedBy="//@person.0">
-      <requirement xsi:type="requirements_editor:QualityRequirement" name="Q3" requirementOwnedBy="//@person.2">
-        <description xsi:type="requirements_editor:TextualDescription"/>
-      </requirement>
-    </subcategoryOf>
+    <subcategoryOf name="empty" categoryOwnedBy="//@person.0"/>
     <requirement xsi:type="requirements_editor:FunctionalRequirement" identifier="" name="F3" requirementOwnedBy="//@person.1">
       <description xsi:type="requirements_editor:TextualDescription"/>
     </requirement>
   </rootCategories>
-  <rootCategories categoryOwnedBy="//@person.1">
-    <subcategoryOf categoryOwnedBy="//@person.0">
-      <subcategoryOf categoryOwnedBy="//@person.2">
-        <subcategoryOf categoryOwnedBy="//@person.1"/>
-      </subcategoryOf>
-    </subcategoryOf>
-  </rootCategories>
-  <person firstname="John" lastname="Doe" personOwnsCategory="//@rootCategories.0/@subcategoryOf.0 //@rootCategories.0/@subcategoryOf.1 //@rootCategories.1 //@rootCategories.1/@subcategoryOf.0 //@rootCategories.1/@subcategoryOf.1 //@rootCategories.2/@subcategoryOf.0"/>
-  <person firstname="Jane" personOwnsRequirement="//@rootCategories.0/@requirement.0 //@rootCategories.0/@subcategoryOf.0/@requirement.0 //@rootCategories.1/@requirement.0" personOwnsCategory="//@rootCategories.2 //@rootCategories.2/@subcategoryOf.0/@subcategoryOf.0/@subcategoryOf.0"/>
-  <person firstname="Some" lastname="Body" personOwnsRequirement="//@rootCategories.0/@subcategoryOf.1/@requirement.0 //@rootCategories.1/@subcategoryOf.0/@requirement.0 //@rootCategories.1/@subcategoryOf.1/@requirement.0" personOwnsCategory="//@rootCategories.0 //@rootCategories.2/@subcategoryOf.0/@subcategoryOf.0"/>
+  <person firstname="John" lastname="Doe" personOwnsRequirement="//@rootCategories.1/@subcategoryOf.0/@requirement.0" personOwnsCategory="//@rootCategories.0/@subcategoryOf.0 //@rootCategories.0/@subcategoryOf.1 //@rootCategories.1 //@rootCategories.1/@subcategoryOf.0 //@rootCategories.1/@subcategoryOf.1"/>
+  <person firstname="Jane" personOwnsRequirement="//@rootCategories.0/@requirement.0 //@rootCategories.0/@subcategoryOf.0/@requirement.0 //@rootCategories.1/@requirement.0"/>
+  <person firstname="Some" lastname="Body" personOwnsRequirement="//@rootCategories.0/@subcategoryOf.1/@requirement.0" personOwnsCategory="//@rootCategories.0"/>
+  <person firstname="Breaker" lastname="Breakerson"/>
 </requirements_editor:DocumentRoot>
