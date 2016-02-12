@@ -69,6 +69,10 @@
                 <styles xmi:type="notation:FontStyle" xmi:id="_39G24cYEEeWvBdHWO6FABA" fontColor="2697711" fontName=".Helvetica Neue DeskInterface" fontHeight="8"/>
                 <layoutConstraint xmi:type="notation:Location" xmi:id="_39G24sYEEeWvBdHWO6FABA"/>
               </children>
+              <children xmi:type="notation:Node" xmi:id="_3ibzgM8MEeWGh7oaVURHxw" type="3010" element="_3hFIoM8MEeWGh7oaVURHxw">
+                <styles xmi:type="notation:FontStyle" xmi:id="_3ibzgc8MEeWGh7oaVURHxw" fontName=".Helvetica Neue DeskInterface" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_3ibzgs8MEeWGh7oaVURHxw"/>
+              </children>
               <styles xmi:type="notation:SortingStyle" xmi:id="_sRyxMcYCEeWvBdHWO6FABA"/>
               <styles xmi:type="notation:FilteringStyle" xmi:id="_sRyxMsYCEeWvBdHWO6FABA"/>
             </children>
@@ -722,6 +726,15 @@
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
+        </ownedElements>
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_3hFIoM8MEeWGh7oaVURHxw" name="findLeafNodes(argument Argument) : RequirementArgument" tooltipText="findLeafNodes(argument) : RequirementArgument">
+          <target xmi:type="ecore:EOperation" href="requirements_editor.ecore#//Requirement/findLeafNodes"/>
+          <semanticElements xmi:type="ecore:EOperation" href="requirements_editor.ecore#//Requirement/findLeafNodes"/>
+          <semanticElements xmi:type="ecore:EParameter" href="requirements_editor.ecore#//Requirement/findLeafNodes/argument"/>
+          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_3hNEcM8MEeWGh7oaVURHxw" labelAlignment="LEFT">
+            <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']"/>
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_AAX0oMYDEeWvBdHWO6FABA" name="Category" tooltipText="" outgoingEdges="_QD_z0MYEEeWvBdHWO6FABA _1lj-cMYJEeWvBdHWO6FABA _kJBYAMZqEeWKfb-KnT48Hw" incomingEdges="_QD_z0MYEEeWvBdHWO6FABA _WSAhsMZmEeWKfb-KnT48Hw" width="12" height="10">
