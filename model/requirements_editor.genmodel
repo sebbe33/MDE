@@ -32,7 +32,7 @@
     <genClasses ecoreClass="requirements_editor.ecore#//QualityRequirement"/>
     <genClasses ecoreClass="requirements_editor.ecore#//FunctionalRequirement"/>
     <genClasses ecoreClass="requirements_editor.ecore#//Person">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute requirements_editor.ecore#//Person/firstname"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute requirements_editor.ecore#//Person/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute requirements_editor.ecore#//Person/lastname"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference requirements_editor.ecore#//Person/personOwnsRequirement"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference requirements_editor.ecore#//Person/personOwnsCategory"/>

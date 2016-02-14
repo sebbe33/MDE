@@ -1,0 +1,51 @@
+DocumentRoot{
+	rootCategories : [
+		Category Cat1 {
+			categoryOwnedBy : Sebastian
+			
+			requirements : [
+				FunctionalRequirement FR1 
+				{
+					name : "Functional Requirement 1"
+					isMandatory
+					priority : 2
+					requirementOwnedBy : Sanders
+					description : "Some lame description"
+					dependencies : [
+						Refines "Functional Requirement 2" 
+					]
+				},
+				
+				FunctionalRequirement FR2
+				{
+					name : "Functional Requirement 2"
+					priority : 2
+					requirementOwnedBy : Sanders
+					description : "Some lame description"
+					dependencies : [
+						Requires NOT ("Functional Requirement 1" OR "Functional Requirement 1")
+					]
+				}
+			]
+		},
+		
+		Category Cat2 {
+			categoryOwnedBy : Sanders
+			
+		}
+	]
+	persons : [
+		Person Sanders {
+			lastname : "Yohama"
+			personOwnsCategories : [Cat2]
+			
+		},
+		
+		Person Sebastian {
+			lastname : "Blomberg"
+			personOwnsCategories : [Cat1]
+			
+		}
+	]
+	
+}

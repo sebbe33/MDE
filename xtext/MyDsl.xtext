@@ -8,11 +8,9 @@ DocumentRoot returns DocumentRoot:
 	{DocumentRoot}
 	'DocumentRoot'
 	'{'
-		('rootCategories' '{' rootCategories+=Category ( "," rootCategories+=Category)* '}' )?
-		('person' '{' person+=Person ( "," person+=Person)* '}' )?
+		('rootCategories' ':' '[' rootCategories+=Category ( "," rootCategories+=Category)* ']' )?
+		('persons' ':' '[' person+=Person ( "," person+=Person)* ']' )?
 	'}';
-
-
 
 Requirement returns Requirement:
 	QualityRequirement | FunctionalRequirement;
@@ -30,19 +28,18 @@ Category returns Category:
 	'Category'
 	name=EString
 	'{'
-		'categoryOwnedBy' categoryOwnedBy=[Person|EString]
-		('subcategoryOf' '{' subcategoryOf+=Category ( "," subcategoryOf+=Category)* '}' )?
-		('requirement' '{' requirement+=Requirement ( "," requirement+=Requirement)* '}' )?
+		'categoryOwnedBy' ':' categoryOwnedBy=[Person|EString]
+		('subcategoryOf' ':' '[' subcategoryOf+=Category ( "," subcategoryOf+=Category)* ']' )?
+		('requirements' ':' '[' requirement+=Requirement ( "," requirement+=Requirement)* ']' )?
 	'}';
 
 Person returns Person:
-	{Person}
 	'Person'
+	name=EString
 	'{'
-		('firstname' firstname=EString)?
-		('lastname' lastname=EString)?
-		('personOwnsRequirement' '(' personOwnsRequirement+=[Requirement|EString] ( "," personOwnsRequirement+=[Requirement|EString])* ')' )?
-		('personOwnsCategory' '(' personOwnsCategory+=[Category|EString] ( "," personOwnsCategory+=[Category|EString])* ')' )?
+		('lastname' ':' lastname=EString)?
+		('personOwnsRequirements' ':' '[' personOwnsRequirement+=[Requirement|EString] ( "," personOwnsRequirement+=[Requirement|EString])* ']' )?
+		('personOwnsCategories' ':' '[' personOwnsCategory+=[Category|EString] ( "," personOwnsCategory+=[Category|EString])* ']' )?
 	'}';
 
 EString returns ecore::EString:
@@ -55,82 +52,53 @@ EBoolean returns ecore::EBoolean:
 	'true' | 'false';
 
 QualityRequirement returns QualityRequirement:
-	(isMandatory?='isMandatory')?
 	'QualityRequirement'
-	name=EString
+	identifier=EString
 	'{'
-		('identifier' identifier=EString)?
-		('priority' priority=EInt)?
-		'requirementOwnedBy' requirementOwnedBy=[Person|EString]
-		'description' description=Description
-		('dependencySource' '{' dependencySource+=Dependency ( "," dependencySource+=Dependency)* '}' )?
+		'name' ':' name=EString
+		(isMandatory?='isMandatory')?
+		'priority' ':' priority=EInt
+		'requirementOwnedBy' ':' requirementOwnedBy=[Person|EString]
+		'description' ':' description=Description
+		('dependencies' ':' '[' dependencySource+=Dependency ( "," dependencySource+=Dependency)* ']' )?
 	'}';
 
 FunctionalRequirement returns FunctionalRequirement:
-	(isMandatory?='isMandatory')?
 	'FunctionalRequirement'
-	name=EString
+	identifier=EString
 	'{'
-		('identifier' identifier=EString)?
-		('priority' priority=EInt)?
-		'requirementOwnedBy' requirementOwnedBy=[Person|EString]
-		'description' description=Description
-		('dependencySource' '{' dependencySource+=Dependency ( "," dependencySource+=Dependency)* '}' )?
+		'name' ':' name=EString
+		(isMandatory?='isMandatory')?
+		'priority' ':' priority=EInt
+		'requirementOwnedBy' ':' requirementOwnedBy=[Person|EString]
+		'description' ':' description=Description
+		('dependencies' ':' '[' dependencySource+=Dependency ( "," dependencySource+=Dependency)* ']' )?
 	'}';
 
 TextualDescription returns TextualDescription:
 	{TextualDescription}
-	'TextualDescription'
-	'{'
-		('description' description=EString)?
-	'}';
+	description=EString;
 
 Refines returns Refines:
-	'Refines'
-	'{'
-		('comment' comment=EString)?
-		'dependencyTarget' dependencyTarget=[Requirement|EString]
-	'}';
+	'Refines' dependencyTarget=[Requirement|EString] ('comment' ':' comment=EString)? ;
 
 ICost returns ICost:
-	'ICost'
-	'{'
-		('comment' comment=EString)?
-		'dependencyTarget' dependencyTarget=[Requirement|EString]
-	'}';
+	'ICost' dependencyTarget=[Requirement|EString] ('comment' comment=EString)?;
 
 CValue returns CValue:
-	'CValue'
-	'{'
-		('comment' comment=EString)?
-		'dependencyTarget' dependencyTarget=[Requirement|EString]
-	'}';
+	'CValue' dependencyTarget=[Requirement|EString] ('comment' comment=EString)?;
 
 Requires returns Requires:
-	'Requires'
-	'{'
-		'argument' argument=Argument
-	'}';
+	'Requires' argument=Argument;
 
 BinaryOperatorArgument returns BinaryOperatorArgument:
-	'BinaryOperatorArgument'
-	'{'
-		('operator' operator=BinaryOperator)?
-		'rightSideArgument' rightSideArgument=Argument
-		'leftSideArgument' leftSideArgument=Argument
-	'}';
+	'(' leftSideArgument=Argument  operator=BinaryOperator rightSideArgument=Argument ')';
 
 RequirementArgument returns RequirementArgument:
-	'RequirementArgument'
-	'{'
-		'requirement' requirement=[Requirement|EString]
-	'}';
+	 requirement=[Requirement|EString];
 
 NOTOperator returns NOTOperator:
-	'NOTOperator'
-	'{'
-		'argument' argument=Argument
-	'}';
+	'NOT' argument=Argument;
 
 enum BinaryOperator returns BinaryOperator:
 				OR = 'OR' | AND = 'AND';
