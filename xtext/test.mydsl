@@ -1,16 +1,16 @@
-ReqSpec { // comments work
-	rootCategories : [
+RequirementsSpecification { // comments work
+	categories : [
 		Category One {
-			categoryResponsible : Some,
+			categoryResponsible : "Some Body",
 			subcategories : [
 				Category SubOne {
-					categoryResponsible : Jane,
+					categoryResponsible : "Jane Doe",
 					requirements : [
 						FunctionalRequirement F1 {
 							mandatory,
 							id : "123",
 							priority : 0,
-							requirementResponsible : John,
+							requirementResponsible : "John Doe",
 							description : "hej",
 							dependsOn : [
 								Refines : F2,
@@ -21,23 +21,23 @@ ReqSpec { // comments work
 							mandatory,
 							id : "123235",
 							priority : 0,
-							requirementResponsible : John,
+							requirementResponsible : "John Doe",
 							description : "hej",
 							dependsOn : [
 								CValue : F1,
-								Requires : NOT (F1 OR F1) AND NOT F1
+								Requires : NOT (F1 OR F1 AND F1) AND NOT F1
 							]
 						}
 					]
 				},
 				Category SubTwo {
-					categoryResponsible : Jane,
+					categoryResponsible : "Jane Doe",
 					requirements : [
 						QualityRequirement Q1 {
 							mandatory,
-							id : "1235497",
+							id : "123549217",
 							priority : 5,
-							requirementResponsible : Some,
+							requirementResponsible : "Some Body",
 							description : "asdf"
 						}
 					]
@@ -47,32 +47,35 @@ ReqSpec { // comments work
 				QualityRequirement Q2 {
 					id : "1234",
 					priority : 5,
-					requirementResponsible : John,
+					requirementResponsible : "John Doe",
 					description : "asdf"
 				}
 			]
 		},
 		Category Two {
-			categoryResponsible : Jane,
+			categoryResponsible : "Jane Doe",
 			requirements : [
 				FunctionalRequirement F3 {
 					id : "134578367",
 					priority : 1,
-					requirementResponsible : Some,
+					requirementResponsible : "Some Body",
+					description : "asjdhf"
+				},
+				FunctionalRequirement F4 {
+					id : "134578368",
+					priority : 1,
+					requirementResponsible : "Some Body",
 					description : "asjdhf"
 				}
 			]
 		}
 	],
 	persons : [
-		Person Jane {
-			lastname "Doe"
+		Person "Jane Doe" {
 		},
-		Person John {
-			lastname "Doe"
+		Person "John Doe" {
 		},
-		Person Some {
-			lastname "Body"
+		Person "Some Body" {
 		}
 	]
 }
