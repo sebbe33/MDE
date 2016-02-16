@@ -38,8 +38,8 @@
       <description xsi:type="requirements_editor:TextualDescription"/>
     </requirement>
   </rootCategories>
-  <person firstname="John" lastname="Doe" personOwnsRequirement="//@rootCategories.1/@subcategoryOf.0/@requirement.0" personOwnsCategory="//@rootCategories.0/@subcategoryOf.0 //@rootCategories.0/@subcategoryOf.1 //@rootCategories.1 //@rootCategories.1/@subcategoryOf.0 //@rootCategories.1/@subcategoryOf.1"/>
-  <person firstname="Jane" personOwnsRequirement="//@rootCategories.0/@requirement.0 //@rootCategories.0/@subcategoryOf.0/@requirement.0 //@rootCategories.1/@requirement.0"/>
-  <person firstname="Some" lastname="Body" personOwnsRequirement="//@rootCategories.0/@subcategoryOf.1/@requirement.0" personOwnsCategory="//@rootCategories.0"/>
-  <person firstname="Breaker" lastname="Breakerson"/>
+  <person name="Jane" lastname="Doe" personOwnsRequirement="//@rootCategories.1/@subcategoryOf.0/@requirement.0" personOwnsCategory="//@rootCategories.0/@subcategoryOf.0 //@rootCategories.0/@subcategoryOf.1 //@rootCategories.1 //@rootCategories.1/@subcategoryOf.0 //@rootCategories.1/@subcategoryOf.1"/>
+  <person name="John" personOwnsRequirement="//@rootCategories.0/@requirement.0 //@rootCategories.0/@subcategoryOf.0/@requirement.0 //@rootCategories.1/@requirement.0"/>
+  <person name="Some" lastname="Body" personOwnsRequirement="//@rootCategories.0/@subcategoryOf.1/@requirement.0" personOwnsCategory="//@rootCategories.0"/>
+  <person lastname="Breakerson"/>
 </requirements_editor:DocumentRoot>
