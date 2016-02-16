@@ -13,10 +13,10 @@ ReqSpec { // comments work
 							requirementResponsible : John
 							description : "hej"
 							dependsOn : [
-								refines : F2
+								refines : F2,
 								refines : "SubTwo.Q1"
 							]
-						}
+						},
 						FunctionalRequirement F2 {
 							mandatory
 							id : "123235"
@@ -24,12 +24,12 @@ ReqSpec { // comments work
 							requirementResponsible : John
 							description : "hej"
 							dependsOn : [
-								CValue : F1
+								CValue : F1,
 								requires : NOT (F1 OR F1) AND NOT F1
 							]
 						}
 					]
-				}
+				},
 				Category SubTwo {
 					categoryResponsible : Jane
 					requirements : [
@@ -51,7 +51,7 @@ ReqSpec { // comments work
 					description : "asdf"
 				}
 			]
-		}
+		},
 		Category Two {
 			categoryResponsible : Jane
 			requirements : [
@@ -67,10 +67,10 @@ ReqSpec { // comments work
 	persons : [
 		Person Jane {
 			lastname "Doe"
-		}
+		},
 		Person John {
 			lastname "Doe"
-		}
+		},
 		Person Some {
 			lastname "Body"
 		}

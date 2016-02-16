@@ -8,8 +8,8 @@ DocumentRoot returns DocumentRoot:// hidden(WS, ML_COMMENT, SL_COMMENT):
 	{DocumentRoot}
 	'ReqSpec'
 	'{'
-		('rootCategories' ':' '[' (rootCategories+=Category)* ']' )?
-		('persons' ':' '[' (person+=Person)+ ']' )?
+		('rootCategories' ':' '[' (rootCategories+=Category)("," rootCategories+=Category)* ']' )?
+		('persons' ':' '[' person+=Person ( "," person+=Person)* ']' )?
 	'}';
 
 
@@ -31,8 +31,8 @@ Category returns Category:
 	name=EString
 	'{'
 		'categoryResponsible' ':' categoryOwnedBy=[Person|EString]
-		('subcategories' ':' '[' (subcategoryOf+=Category)* ']')?
-		('requirements' ':' '[' (requirement+=Requirement)* ']' )?
+		('subcategories' ':' '[' subcategoryOf+=Category ( "," subcategoryOf+=Category)* ']')?
+		('requirements' ':' '[' requirement+=Requirement ( "," requirement+=Requirement)* ']' )?
 	'}';
 
 Person returns Person:
@@ -60,7 +60,7 @@ QualityRequirement returns QualityRequirement:
 		'priority' ':' priority=EInt
 		'requirementResponsible' ':' requirementOwnedBy=[Person|EString]
 		'description' ':' description=Description
-		('dependsOn' ':' '[' (dependencySource+=Dependency)* ']' )?
+		('dependsOn' ':' '[' (dependencySource+=Dependency)("," dependencySource+=Dependency)* ']' )?
 	'}';
 
 FunctionalRequirement returns FunctionalRequirement:
@@ -72,7 +72,7 @@ FunctionalRequirement returns FunctionalRequirement:
 		'priority' ':' priority=EInt
 		'requirementResponsible' ':' requirementOwnedBy=[Person|EString]
 		'description' ':' description=Description
-		('dependsOn' ':' '[' (dependencySource+=Dependency)* ']' )?
+		('dependsOn' ':' '[' (dependencySource+=Dependency)("," dependencySource+=Dependency)*  ']' )?
 	'}';
 
 TextualDescription returns TextualDescription:
