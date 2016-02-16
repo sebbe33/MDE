@@ -1,51 +1,78 @@
-DocumentRoot{
+ReqSpec { // comments work
 	rootCategories : [
-		Category Cat1 {
-			categoryOwnedBy : Sebastian
-			
-			requirements : [
-				FunctionalRequirement FR1 
-				{
-					name : "Functional Requirement 1"
-					isMandatory
-					priority : 2
-					requirementOwnedBy : Sanders
-					description : "Some lame description"
-					dependencies : [
-						Refines "Functional Requirement 2" 
+		Category One {
+			categoryResponsible : Some
+			subcategories : [
+				Category SubOne {
+					categoryResponsible : Jane
+					requirements : [
+						FunctionalRequirement F1 {
+							mandatory
+							id : "123"
+							priority : 0
+							requirementResponsible : John
+							description : "hej"
+							dependsOn : [
+								refines : F2
+								refines : "SubTwo.Q1"
+							]
+						}
+						FunctionalRequirement F2 {
+							mandatory
+							id : "123235"
+							priority : 0
+							requirementResponsible : John
+							description : "hej"
+							dependsOn : [
+								CValue : F1
+								requires : NOT (F1 OR F1) AND NOT F1
+							]
+						}
 					]
-				},
-				
-				FunctionalRequirement FR2
-				{
-					name : "Functional Requirement 2"
-					priority : 2
-					requirementOwnedBy : Sanders
-					description : "Some lame description"
-					dependencies : [
-						Requires NOT ("Functional Requirement 1" OR "Functional Requirement 1")
+				}
+				Category SubTwo {
+					categoryResponsible : Jane
+					requirements : [
+						QualityRequirement Q1 {
+							mandatory
+							id : "1235497"
+							priority : 5
+							requirementResponsible : Some
+							description : "asdf"
+						}
 					]
 				}
 			]
-		},
-		
-		Category Cat2 {
-			categoryOwnedBy : Sanders
-			
+			requirements : [
+				QualityRequirement Q2 {
+					id : "1234"
+					priority : 5
+					requirementResponsible : John
+					description : "asdf"
+				}
+			]
+		}
+		Category Two {
+			categoryResponsible : Jane
+			requirements : [
+				FunctionalRequirement F3 {
+					id : "134578367"
+					priority : 1
+					requirementResponsible : Some
+					description : "asjdhf"
+				}
+			]
 		}
 	]
 	persons : [
-		Person Sanders {
-			lastname : "Yohama"
-			personOwnsCategories : [Cat2]
-			
-		},
-		
-		Person Sebastian {
-			lastname : "Blomberg"
-			personOwnsCategories : [Cat1]
-			
+		Person Jane {
+			lastname "Doe"
+		}
+		Person John {
+			lastname "Doe"
+		}
+		Person Some {
+			lastname "Body"
 		}
 	]
-	
 }
