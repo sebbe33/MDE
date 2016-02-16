@@ -1,69 +1,69 @@
 ReqSpec { // comments work
 	rootCategories : [
 		Category One {
-			categoryResponsible : Some
+			categoryResponsible : Some,
 			subcategories : [
 				Category SubOne {
-					categoryResponsible : Jane
+					categoryResponsible : Jane,
 					requirements : [
 						FunctionalRequirement F1 {
-							mandatory
-							id : "123"
-							priority : 0
-							requirementResponsible : John
-							description : "hej"
+							mandatory,
+							id : "123",
+							priority : 0,
+							requirementResponsible : John,
+							description : "hej",
 							dependsOn : [
-								refines : F2,
-								refines : "SubTwo.Q1"
+								Refines : F2,
+								Refines : "SubTwo.Q1"
 							]
 						},
 						FunctionalRequirement F2 {
-							mandatory
-							id : "123235"
-							priority : 0
-							requirementResponsible : John
-							description : "hej"
+							mandatory,
+							id : "123235",
+							priority : 0,
+							requirementResponsible : John,
+							description : "hej",
 							dependsOn : [
 								CValue : F1,
-								requires : NOT (F1 OR F1) AND NOT F1
+								Requires : NOT (F1 OR F1) AND NOT F1
 							]
 						}
 					]
 				},
 				Category SubTwo {
-					categoryResponsible : Jane
+					categoryResponsible : Jane,
 					requirements : [
 						QualityRequirement Q1 {
-							mandatory
-							id : "1235497"
-							priority : 5
-							requirementResponsible : Some
+							mandatory,
+							id : "1235497",
+							priority : 5,
+							requirementResponsible : Some,
 							description : "asdf"
 						}
 					]
 				}
-			]
+			],
 			requirements : [
 				QualityRequirement Q2 {
-					id : "1234"
-					priority : 5
-					requirementResponsible : John
+					id : "1234",
+					priority : 5,
+					requirementResponsible : John,
 					description : "asdf"
 				}
 			]
 		},
 		Category Two {
-			categoryResponsible : Jane
+			categoryResponsible : Jane,
 			requirements : [
 				FunctionalRequirement F3 {
-					id : "134578367"
-					priority : 1
-					requirementResponsible : Some
+					id : "134578367",
+					priority : 1,
+					requirementResponsible : Some,
 					description : "asjdhf"
 				}
 			]
 		}
-	]
+	],
 	persons : [
 		Person Jane {
 			lastname "Doe"
