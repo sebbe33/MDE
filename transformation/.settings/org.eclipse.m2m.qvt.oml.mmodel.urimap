@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="ASCII"?>
+<uriMap:MappingContainer xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:uriMap="http:///www.eclipse.org/m2m/qvt/oml/MModelUriMap/1.0.0">
+  <mapping sourceURI="requirements_editor" targetURI="platform:/resource/requirements_editor/model/requirements_editor.ecore"/>
+  <mapping sourceURI="socialNetwork" targetURI="platform:/resource/se.chalmers.mde.2015.socialNetwork/model/socialNetwork.ecore"/>
+</uriMap:MappingContainer>

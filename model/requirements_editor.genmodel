@@ -62,6 +62,7 @@
     <genClasses ecoreClass="requirements_editor.ecore#//DocumentRoot">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference requirements_editor.ecore#//DocumentRoot/rootCategories"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference requirements_editor.ecore#//DocumentRoot/person"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute requirements_editor.ecore#//DocumentRoot/name"/>
     </genClasses>
     <genClasses ecoreClass="requirements_editor.ecore#//NOTOperator">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference requirements_editor.ecore#//NOTOperator/argument"/>

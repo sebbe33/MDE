@@ -1,0 +1,72 @@
+modeltype Req uses "http://www.example.org/requirements_editor";
+modeltype Social uses "http://chalmers.se/mde/socialNetwork";
+
+transformation MyTransformation(in input : Req, out output : Social);
+
+main() {
+	input.rootObjects()[DocumentRoot]->map toSocial();
+}
+
+mapping Req::DocumentRoot::toSocial() : Social::SocialNetwork {
+	name := self.name;
+	person := self.person->map personToPerson();
+	edge := SimpleDependency.allInstances()->map dependencyToEdge();
+}
+
+query Req::SimpleDependency::getAllDependenciesBetweenPersons() : Set(SimpleDependency) {
+	// Get the set of all relations between source and target
+	return SimpleDependency.allInstances()->select(d | d.dependencyTarget.requirementOwnedBy = self.dependencyTarget.requirementOwnedBy
+		and d.container().oclAsType(Requirement).requirementOwnedBy = self.container().oclAsType(Requirement).requirementOwnedBy)
+}
+
+query Req::Argument::getSourceRequirement() : Requirement {
+	if self.container().oclIsKindOf(Requires) then 
+		return self.container().oclAsType(Requires).container().oclAsType(Requirement)
+	endif;
+	
+	// Loop recursively to find Requires dependency
+	return self.container().oclAsType(Argument).getSourceRequirement();
+}
+
+query Req::SimpleDependency::getDependencyInString() : String {
+	if self.oclIsKindOf(ICost) then return "ICost"
+	else 
+		if self.oclIsKindOf(CValue) then return "CValue" endif
+	endif;
+	
+	return "Refines";
+}
+
+
+
+mapping Req::Person::personToPerson() : Social::Person {
+	name := self.name;
+}
+
+mapping Req::SimpleDependency::dependencyToEdge() : Social::Edge when 
+{
+	// Check if these is an existing edge between the owner of the source requirement, and the owner of the target requirement
+	let theSource = self.container().oclAsType(Requirement).requirementOwnedBy.resolveone(Social::Person) in 
+		not theSource.relation->exists(e | e.target = self.dependencyTarget.requirementOwnedBy.resolveone(Social::Person))
+} 
+{
+	result.target := self.dependencyTarget.requirementOwnedBy.resolveone(Social::Person);
+	
+	// Add the source of the edge
+	self.container().oclAsType(Requirement).requirementOwnedBy.resolveone(Social::Person).relation += result;
+	
+	// Calculate weight and gather annotation
+	var allDependencies = self.getAllDependenciesBetweenPersons(); 
+	result.weight := allDependencies->size();
+	result.annotation := self.container().oclAsType(Requirement)->map requirementToAnnotation(allDependencies);
+	
+}
+
+mapping Req::Requirement::requirementToAnnotation(in dependencies : Set(SimpleDependency)) : Social::Annotation {
+	description := "";
+	dependencies->forEach(dependency) {
+		description := description + " | " + dependency.container().oclAsType(Requirement).name + " " + dependency.getDependencyInString() + " " + dependency.dependencyTarget.name;
+	};
+}
+
+

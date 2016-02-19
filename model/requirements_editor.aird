@@ -254,6 +254,10 @@
           <children xmi:type="notation:Node" xmi:id="_Lj9DkMZmEeWKfb-KnT48Hw" type="2003" element="_LjGH8MZmEeWKfb-KnT48Hw">
             <children xmi:type="notation:Node" xmi:id="_LkBVAMZmEeWKfb-KnT48Hw" type="5007"/>
             <children xmi:type="notation:Node" xmi:id="_LkB8EMZmEeWKfb-KnT48Hw" type="7004">
+              <children xmi:type="notation:Node" xmi:id="_AC7dYNbuEeWjB-by4O80-g" type="3010" element="_ABt8cNbuEeWjB-by4O80-g">
+                <styles xmi:type="notation:FontStyle" xmi:id="_AC7dYdbuEeWjB-by4O80-g" fontColor="2697711" fontName=".Helvetica Neue DeskInterface" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_AC7dYtbuEeWjB-by4O80-g"/>
+              </children>
               <styles xmi:type="notation:SortingStyle" xmi:id="_LkB8EcZmEeWKfb-KnT48Hw"/>
               <styles xmi:type="notation:FilteringStyle" xmi:id="_LkB8EsZmEeWKfb-KnT48Hw"/>
             </children>
@@ -1193,10 +1197,18 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_LjHWEMZmEeWKfb-KnT48Hw" backgroundStyle="Liquid" foregroundColor="255,252,216">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_BobbkNbuEeWjB-by4O80-g" backgroundStyle="Liquid" foregroundColor="255,252,216">
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ABt8cNbuEeWjB-by4O80-g" name="name : EString" tooltipText="">
+          <target xmi:type="ecore:EAttribute" href="requirements_editor.ecore#//DocumentRoot/name"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="requirements_editor.ecore#//DocumentRoot/name"/>
+          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_BoiwUNbuEeWjB-by4O80-g" labelAlignment="LEFT">
+            <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
+        </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_WSAhsMZmEeWKfb-KnT48Hw" name="[0..*] rootCategories" sourceNode="_LjGH8MZmEeWKfb-KnT48Hw" targetNode="_AAX0oMYDEeWvBdHWO6FABA">
         <target xmi:type="ecore:EReference" href="requirements_editor.ecore#//DocumentRoot/rootCategories"/>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<se.chalmers.mde:SocialNetwork xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:se.chalmers.mde="http://chalmers.se/mde/socialNetwork" name="My Req Spec">
+  <person name="Carl Anderson" relation="//@edge.1"/>
+  <person name="Amelia Johnson" relation="//@edge.0"/>
+  <person name="Person 3"/>
+  <edge weight="2" target="//@person.0">
+    <annotation description=" | FR1 ICost FR3 | FR1 CValue FR2"/>
+  </edge>
+  <edge weight="1" target="//@person.1">
+    <annotation description=" | FR2 Refines FR1"/>
+  </edge>
+</se.chalmers.mde:SocialNetwork>

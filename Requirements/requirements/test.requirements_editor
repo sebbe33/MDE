@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<requirements_editor:DocumentRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:requirements_editor="http://www.example.org/requirements_editor" name="My Req Spec">
+  <rootCategories name="Cat 1" categoryOwnedBy="Person 3">
+    <requirement xsi:type="requirements_editor:FunctionalRequirement" identifier="FR1" name="FR1" requirementOwnedBy="Amelia Johnson">
+      <dependencySource xsi:type="requirements_editor:ICost" dependencyTarget="FR3"/>
+      <dependencySource xsi:type="requirements_editor:CValue" dependencyTarget="FR2"/>
+    </requirement>
+    <requirement xsi:type="requirements_editor:FunctionalRequirement" identifier="FR2" name="FR2" requirementOwnedBy="Carl Anderson">
+      <dependencySource xsi:type="requirements_editor:Refines" dependencyTarget="FR1"/>
+    </requirement>
+    <requirement xsi:type="requirements_editor:FunctionalRequirement" identifier="FR3" name="FR3" requirementOwnedBy="Carl Anderson"/>
+  </rootCategories>
+  <person name="Carl Anderson" personOwnsRequirement="FR2 FR3"/>
+  <person name="Amelia Johnson" personOwnsRequirement="FR1"/>
+  <person name="Person 3" personOwnsCategory="//@rootCategories.0"/>
+</requirements_editor:DocumentRoot>
