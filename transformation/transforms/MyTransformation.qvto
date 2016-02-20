@@ -28,6 +28,7 @@ query Req::Argument::getSourceRequirement() : Requirement {
 	return self.container().oclAsType(Argument).getSourceRequirement();
 }
 
+
 query Req::SimpleDependency::getDependencyInString() : String {
 	if self.oclIsKindOf(ICost) then return "ICost"
 	else 
@@ -58,15 +59,12 @@ mapping Req::SimpleDependency::dependencyToEdge() : Social::Edge when
 	// Calculate weight and gather annotation
 	var allDependencies = self.getAllDependenciesBetweenPersons(); 
 	result.weight := allDependencies->size();
-	result.annotation := self.container().oclAsType(Requirement)->map requirementToAnnotation(allDependencies);
+	result.annotation := allDependencies->map requirementToAnnotation(self.container().oclAsType(Requirement));
 	
 }
 
-mapping Req::Requirement::requirementToAnnotation(in dependencies : Set(SimpleDependency)) : Social::Annotation {
-	description := "";
-	dependencies->forEach(dependency) {
-		description := description + " | " + dependency.container().oclAsType(Requirement).name + " " + dependency.getDependencyInString() + " " + dependency.dependencyTarget.name;
-	};
+mapping Req::SimpleDependency::requirementToAnnotation(in sourceReq : Requirement) : Social::Annotation {
+	description := sourceReq.name + " " + self.getDependencyInString() + " " + self.dependencyTarget.name;
 }
 
 
