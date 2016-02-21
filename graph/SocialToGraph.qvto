@@ -1,0 +1,28 @@
+modeltype Soc uses "http://chalmers.se/mde/socialNetwork";
+modeltype Graph uses "http://www.example.org/graphviz";
+
+transformation SocialToGraph(in input : Soc, out output : Graph);
+
+main() {
+	input.rootObjects()[SocialNetwork]->map toGraph();
+}
+
+
+mapping Soc::Person::toNode() : Graph::dot::DotNode{
+	name := self.name;
+	
+}
+
+query Soc::Edge::getSource() : Graph::dot::DotNode{
+	return input.allInstances(Person)->select(p | p.relation->includes(self)).resolveone(Graph::dot::DotNode);	
+}
+
+mapping Soc::Edge::toEdge() : Graph::dot::DotEdge{
+	target := self.target.resolveone(Graph::dot::DotNode);
+	source := self.getSource();
+}
+
+mapping Soc::SocialNetwork::toGraph() : Graph::common::Graph{
+	nodes := self.person->map toNode();
+	edges := self.edge->map toEdge();
+}
