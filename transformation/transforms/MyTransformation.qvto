@@ -10,16 +10,28 @@ main() {
 mapping Req::DocumentRoot::toSocial() : Social::SocialNetwork {
 	name := self.name;
 	person := self.person->map personToPerson();
-	edge := SimpleDependency.allInstances()->map dependencyToEdge();
+	edge := SimpleDependency.allInstances()->map dependencyToEdge()->union(RequirementArgument.allInstances()->map requirementArgToEdge());
 }
 
+// Get the set of all simpleDependencies with the same source owner and target owner
 query Req::SimpleDependency::getAllDependenciesBetweenPersons() : Set(SimpleDependency) {
-	// Get the set of all relations between source and target
 	return SimpleDependency.allInstances()->select(d | d.dependencyTarget.requirementOwnedBy = self.dependencyTarget.requirementOwnedBy
 		and d.container().oclAsType(Requirement).requirementOwnedBy = self.container().oclAsType(Requirement).requirementOwnedBy)
 }
 
-query Req::Argument::getSourceRequirement() : Requirement {
+// Get the set of all requirementArguments with the same source owner and target owner
+query Req::RequirementArgument::getAllReqDepsBetweenPersons() : Set(RequirementArgument) {
+	return RequirementArgument.allInstances()->select(r | r.requirement.requirementOwnedBy = self.requirement.requirementOwnedBy
+		and r.getSourceRequirement().requirementOwnedBy = self.getSourceRequirement().requirementOwnedBy)	
+}
+
+// Get the set of all requirementArguments with the same source owner and target owner as the simpleDependency
+query Req::SimpleDependency::getAllReqDepsWithSamePersons() : Set(RequirementArgument) {
+	return RequirementArgument.allInstances()->select(r | r.requirement.requirementOwnedBy = self.dependencyTarget.requirementOwnedBy
+		and r.getSourceRequirement().requirementOwnedBy = self.container().oclAsType(Requirement).requirementOwnedBy)
+}
+
+query Req::Argument::getSourceRequirement() : Req::Requirement {
 	if self.container().oclIsKindOf(Requires) then 
 		return self.container().oclAsType(Requires).container().oclAsType(Requirement)
 	endif;
@@ -38,33 +50,54 @@ query Req::SimpleDependency::getDependencyInString() : String {
 	return "Refines";
 }
 
-
-
 mapping Req::Person::personToPerson() : Social::Person {
 	name := self.name;
 }
 
 mapping Req::SimpleDependency::dependencyToEdge() : Social::Edge when 
 {
-	// Check if these is an existing edge between the owner of the source requirement, and the owner of the target requirement
+	// Check if there is an existing edge between the owner of the source requirement, and the owner of the target requirement
 	let theSource = self.container().oclAsType(Requirement).requirementOwnedBy.resolveone(Social::Person) in 
 		not theSource.relation->exists(e | e.target = self.dependencyTarget.requirementOwnedBy.resolveone(Social::Person))
 } 
 {
 	result.target := self.dependencyTarget.requirementOwnedBy.resolveone(Social::Person);
 	
-	// Add the source of the edge
-	self.container().oclAsType(Requirement).requirementOwnedBy.resolveone(Social::Person).relation += result;
+	var source = self.container().oclAsType(Requirement);
+	// Add the resultant edge to its source
+	source.requirementOwnedBy.resolveone(Social::Person).relation += result;
 	
-	// Calculate weight and gather annotation
-	var allDependencies = self.getAllDependenciesBetweenPersons(); 
-	result.weight := allDependencies->size();
-	result.annotation := allDependencies->map requirementToAnnotation(self.container().oclAsType(Requirement));
+	// Calculate weight and gather annotations for the simpleDeps and requirementArgs that share the same source and target owner
+	var allSimpleDependencies = self.getAllDependenciesBetweenPersons(); 
+	var allRequiresBetweenPersons = self.getAllReqDepsWithSamePersons();
+	result.weight := allSimpleDependencies->size() + allRequiresBetweenPersons->size();
+	result.annotation := allSimpleDependencies->map simpleDepToAnnotation(source)->
+		union(allRequiresBetweenPersons->map requirementToAnnotation(source));
 	
 }
 
-mapping Req::SimpleDependency::requirementToAnnotation(in sourceReq : Requirement) : Social::Annotation {
+mapping Req::RequirementArgument::requirementArgToEdge() : Social::Edge when
+{
+	// Check if there is an existing edge between the owner of the source requirement, and the owner of the target requirement
+	let theSource = self.getSourceRequirement().requirementOwnedBy.resolveone(Social::Person) in 
+		not theSource.relation->exists(e | e.target = self.requirement.requirementOwnedBy.resolveone(Social::Person))
+}
+{
+	var source = self.getSourceRequirement();
+	
+	result.target := self.requirement.requirementOwnedBy.resolveone(Social::Person);
+	// Add the resultant edge to its source
+	source.requirementOwnedBy.resolveone(Social::Person).relation += result;
+
+	var allRequiresBetweenPersons = self.getAllReqDepsBetweenPersons();
+	result.weight := allRequiresBetweenPersons->size();
+	result.annotation := allRequiresBetweenPersons->map requirementToAnnotation(source);
+}
+
+mapping Req::SimpleDependency::simpleDepToAnnotation(in sourceReq : Requirement) : Social::Annotation {
 	description := sourceReq.name + " " + self.getDependencyInString() + " " + self.dependencyTarget.name;
 }
 
-
+mapping Req::RequirementArgument::requirementToAnnotation(in sourceReq : Requirement) : Social::Annotation {
+	description := sourceReq.name + " Requires " + self.requirement.name;
+}
