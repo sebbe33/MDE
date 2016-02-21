@@ -14,4 +14,38 @@
             genModel="model/requirements_editor.genmodel"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated grahphviz -->
+      <package
+            uri="http://www.fujaba.de/graphviz/0.1.0"
+            class="graphviz.GraphvizPackage"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated grahphviz -->
+      <package
+            uri="http://www.fujaba.de/graphviz/dot/0.1.0"
+            class="graphviz.dot.DotPackage"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated grahphviz -->
+      <package
+            uri="http://www.fujaba.de/graphviz/plain/0.1.0"
+            class="graphviz.plain.PlainPackage"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated grahphviz -->
+      <package
+            uri="http://www.fujaba.de/graphviz/common/0.1.0"
+            class="graphviz.common.CommonPackage"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated grahphviz -->
+      <package
+            uri="http://www.fujaba.de/graphviz/util/0.1.0"
+            class="graphviz.util.UtilPackage"/>
+   </extension>
 </plugin>
