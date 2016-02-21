@@ -9,22 +9,7 @@ Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: requirements_editor,
  requirements_editor.impl,
- requirements_editor.util,
- graphviz,
- graphviz.common,
- graphviz.common.impl,
- graphviz.common.util,
- graphviz.dot,
- graphviz.dot.impl,
- graphviz.dot.util,
- graphviz.impl,
- graphviz.plain,
- graphviz.plain.impl,
- graphviz.plain.util,
- graphviz.util,
- graphviz.util.impl,
- graphviz.util.util
+ requirements_editor.util
 Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.emf.ecore;visibility:=reexport,
- org.storydriven.core;visibility:=reexport
+ org.eclipse.emf.ecore;visibility:=reexport
 Bundle-ActivationPolicy: lazy
