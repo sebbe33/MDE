@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<requirements_editor:DocumentRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:requirements_editor="http://www.example.org/requirements_editor">
+  <rootCategories name="category" categoryOwnedBy="Arnold Schwarzenegger">
+    <requirement xsi:type="requirements_editor:FunctionalRequirement" identifier="asdf" name="FR1" requirementOwnedBy="Alan Turing">
+      <description xsi:type="requirements_editor:TextualDescription"/>
+      <dependencySource xsi:type="requirements_editor:ICost" dependencyTarget="FR4"/>
+      <dependencySource xsi:type="requirements_editor:CValue" dependencyTarget="//@rootCategories.0/@requirement.4"/>
+      <dependencySource xsi:type="requirements_editor:Refines" comment="" dependencyTarget="//@rootCategories.0/@requirement.10"/>
+    </requirement>
+    <requirement xsi:type="requirements_editor:FunctionalRequirement" name="FR2" requirementOwnedBy="Alonzo Church">
+      <description xsi:type="requirements_editor:TextualDescription"/>
+      <dependencySource xsi:type="requirements_editor:Requires">
+        <argument xsi:type="requirements_editor:BinaryOperatorArgument">
+          <rightSideArgument xsi:type="requirements_editor:BinaryOperatorArgument">
+            <rightSideArgument xsi:type="requirements_editor:RequirementArgument" requirement="FR4"/>
+            <leftSideArgument xsi:type="requirements_editor:RequirementArgument" requirement="FR7"/>
+          </rightSideArgument>
+          <leftSideArgument xsi:type="requirements_editor:RequirementArgument" requirement="//@rootCategories.0/@requirement.4"/>
+        </argument>
+      </dependencySource>
+    </requirement>
+    <requirement xsi:type="requirements_editor:FunctionalRequirement" name="FR3" requirementOwnedBy="Percy Nilegaard">
+      <description xsi:type="requirements_editor:TextualDescription"/>
+      <dependencySource xsi:type="requirements_editor:CValue" dependencyTarget="//@rootCategories.0/@requirement.7"/>
+    </requirement>
+    <requirement xsi:type="requirements_editor:FunctionalRequirement" identifier="FR4" name="FR4" requirementOwnedBy="Glenn Killing">
+      <description xsi:type="requirements_editor:TextualDescription"/>
+    </requirement>
+    <requirement xsi:type="requirements_editor:FunctionalRequirement" name="FR5" requirementOwnedBy="Glenn Killing">
+      <description xsi:type="requirements_editor:TextualDescription"/>
+    </requirement>
+    <requirement xsi:type="requirements_editor:FunctionalRequirement" identifier="" name="FR6" requirementOwnedBy="Greger Hawkwind">
+      <description xsi:type="requirements_editor:TextualDescription"/>
+    </requirement>
+    <requirement xsi:type="requirements_editor:FunctionalRequirement" identifier="FR7" name="FR7" requirementOwnedBy="Glenn Killing">
+      <description xsi:type="requirements_editor:TextualDescription"/>
+    </requirement>
+    <requirement xsi:type="requirements_editor:FunctionalRequirement" name="FR8" requirementOwnedBy="Charles Babbage">
+      <description xsi:type="requirements_editor:TextualDescription"/>
+    </requirement>
+    <requirement xsi:type="requirements_editor:FunctionalRequirement" identifier="FR9" name="FR9" requirementOwnedBy="Noam Chomsky">
+      <description xsi:type="requirements_editor:TextualDescription"/>
+    </requirement>
+    <requirement xsi:type="requirements_editor:FunctionalRequirement" name="FR10" requirementOwnedBy="Isaac Newton">
+      <description xsi:type="requirements_editor:TextualDescription"/>
+    </requirement>
+    <requirement xsi:type="requirements_editor:FunctionalRequirement" name="FR11" requirementOwnedBy="Horace Engdahl">
+      <description xsi:type="requirements_editor:TextualDescription"/>
+    </requirement>
+  </rootCategories>
+  <person name="Arnold Schwarzenegger" personOwnsCategory="//@rootCategories.0"/>
+  <person name="Alan Turing" personOwnsRequirement="asdf"/>
+  <person name="Alonzo Church" personOwnsRequirement="//@rootCategories.0/@requirement.1"/>
+  <person name="Percy Nilegaard" personOwnsRequirement="//@rootCategories.0/@requirement.2"/>
+  <person name="Glenn Killing" personOwnsRequirement="FR4 //@rootCategories.0/@requirement.4 FR7"/>
+  <person name="Greger Hawkwind" personOwnsRequirement=""/>
+  <person name="Charles Babbage" personOwnsRequirement="//@rootCategories.0/@requirement.7"/>
+  <person name="Noam Chomsky" personOwnsRequirement="FR9"/>
+  <person name="Isaac Newton" personOwnsRequirement="//@rootCategories.0/@requirement.9"/>
+  <person name="Horace Engdahl" personOwnsRequirement="//@rootCategories.0/@requirement.10"/>
+</requirements_editor:DocumentRoot>

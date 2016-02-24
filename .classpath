@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/com.google.inject_3.0.0.v201312141243.jar"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.xtext_2.8.4.v201508050135.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

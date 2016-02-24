@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dot:DotGraph xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dot="http://www.fujaba.de/graphviz/dot/0.1.0" xsi:schemaLocation="http://www.fujaba.de/graphviz/dot/0.1.0 http://www.example.org/graphviz#//dot">
+  <nodes xsi:type="dot:DotNode" name="Arnold Schwarzenegger"/>
+  <nodes xsi:type="dot:DotNode" name="Alan Turing"/>
+  <nodes xsi:type="dot:DotNode" name="Alonzo Church"/>
+  <nodes xsi:type="dot:DotNode" name="Percy Nilegaard"/>
+  <nodes xsi:type="dot:DotNode" name="Glenn Killing"/>
+  <nodes xsi:type="dot:DotNode" name="Greger Hawkwind"/>
+  <nodes xsi:type="dot:DotNode" name="Charles Babbage"/>
+  <nodes xsi:type="dot:DotNode" name="Noam Chomsky"/>
+  <nodes xsi:type="dot:DotNode" name="Isaac Newton"/>
+  <nodes xsi:type="dot:DotNode" name="Horace Engdahl"/>
+  <edges xsi:type="dot:DotEdge" source="//@nodes.1" target="//@nodes.9"/>
+  <edges xsi:type="dot:DotEdge" source="//@nodes.3" target="//@nodes.6"/>
+  <edges xsi:type="dot:DotEdge" source="//@nodes.2" target="//@nodes.4"/>
+  <edges xsi:type="dot:DotEdge" source="//@nodes.1" target="//@nodes.4"/>
+</dot:DotGraph>

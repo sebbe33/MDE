@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<se.chalmers.mde:SocialNetwork xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:se.chalmers.mde="http://chalmers.se/mde/socialNetwork">
+  <person name="Arnold Schwarzenegger"/>
+  <person name="Alan Turing" relation="//@edge.3 //@edge.0"/>
+  <person name="Alonzo Church" relation="//@edge.2"/>
+  <person name="Percy Nilegaard" relation="//@edge.1"/>
+  <person name="Glenn Killing"/>
+  <person name="Greger Hawkwind"/>
+  <person name="Charles Babbage"/>
+  <person name="Noam Chomsky"/>
+  <person name="Isaac Newton"/>
+  <person name="Horace Engdahl"/>
+  <edge weight="1" target="//@person.9">
+    <annotation description="FR1 Refines FR11"/>
+  </edge>
+  <edge weight="1" target="//@person.6">
+    <annotation description="FR3 CValue FR8"/>
+  </edge>
+  <edge weight="3" target="//@person.4">
+    <annotation description="FR2 Requires FR5"/>
+    <annotation description="FR2 Requires FR7"/>
+    <annotation description="FR2 Requires FR4"/>
+  </edge>
+  <edge weight="2" target="//@person.4">
+    <annotation description="FR1 ICost FR4"/>
+    <annotation description="FR1 CValue FR5"/>
+  </edge>
+</se.chalmers.mde:SocialNetwork>
